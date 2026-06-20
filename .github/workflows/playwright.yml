@@ -32,3 +32,15 @@ jobs:
 
     - name: Execute Playwright Automation Tests
       run: npx playwright test
+
+
+      # 💡 NEW CLOUD RETENTION STEP ADDED BELOW
+    - name: Upload Test Evidence and HTML Reports
+      uses: actions/upload-artifact@v4
+      if: always() # ⚠️ THE CRITICAL CONDITION SWITCH
+      with:
+        name: playwright-execution-evidence
+        path: |
+          playwright-report/
+          test-results/
+        retention-days: 30
