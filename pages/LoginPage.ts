@@ -24,7 +24,8 @@ export class LoginPage {
 
   // 3. METHODS: Pure actions and data providers only. No assertions!
   async navigateTo() {
-    await this.page.goto('https://qa.hitekschool.com/lms/3108/login');
+    await this.page.goto('login');  //No leading slash!
+    //await this.page.goto('https://qa.hitekschool.com/lms/3108/login');
   }
 
   async enterCredentials(branch: string, user: string, pass: string) {

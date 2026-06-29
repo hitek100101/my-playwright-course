@@ -45,5 +45,25 @@ export async function fillAddUserFields(page: Page, username: string, password: 
 }
 
 
+// --- REUSABLE Fill Add Customer fields FUNCTION ---
+export async function fillAddCustomerFields(page: Page, accountNumber: string, firstName: string, lastName: string, title: string) {
 
+ // Filll in the Add Customer form fields
+  
+  await page.getByLabel('Title:').selectOption(title);
+    
+  await page.getByLabel('Account #:*').fill(accountNumber);
+  //await page.getByRole('textbox', { name: 'Account #:*' }).fill('9112334');
 
+  await page.getByLabel('Title:').selectOption(title);
+  
+  await page.getByLabel('First Name:*').fill(firstName);
+  //await page.getByRole('textbox', { name: 'First Name:*' }).fill('Test');
+  
+  await page.getByLabel('Last  Name:*').fill(lastName);
+  //await page.getByRole('textbox', { name: 'Last Name:*' }).fill('Test');
+   
+  // Click Save button
+  await page.getByRole('button', { name: 'Save', exact: true }).click();
+
+}

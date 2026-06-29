@@ -29,8 +29,13 @@ export default defineConfig({
   /* Run tests in files in parallel across available local CPU cores */
   fullyParallel: true,
 
-  /* Fail the build if a developer accidentally leaves 'test.only' in the code */
-  forbidOnly: false, // 💡 Note: Will be automated using process.env.CI in the CI/CD chapter
+  // /* Fail the build if a developer accidentally leaves 'test.only' in the code */
+  // forbidOnly: false, // 💡 Note: Will be automated using process.env.CI in the CI/CD chapter
+  /**
+   * forbidOnly: Fails the build if 'test.only' is accidentally left in code.
+   * On CI, this ensures developers don't accidentally skip the entire suite.
+   */
+  forbidOnly: !!process.env.CI,
 
   /* ========================================================================== */
   /* 2. TIMING, TIMEOUTS, AND RETRIES (CORE CHAPTER 13.3)                       */
@@ -48,14 +53,16 @@ export default defineConfig({
    * Sets the number of times Playwright immediately re-runs a failed test file.
    * Hardcoded to 1 here so students can observe the "Flaky" status locally.
    */
-  retries: 1, // 💡 Hardcoded for local mastery: Replaces "process.env.CI ? 2 : 0" for this chapter
+  //retries: 1, // 💡 Hardcoded for local mastery: Replaces "process.env.CI ? 2 : 0" for this chapter
+   retries: process.env.CI ? 2 : 1,
 
   /**
    * workers: Sets the number of concurrent execution threads.
    * Passing 'undefined' tells Playwright to automatically optimize speed by 
    * leveraging all available local CPU cores.
    */
-  workers: undefined, // 💡 Hardcoded for local mastery: Replaces "process.env.CI ? 1 : undefined"
+  //workers: undefined, // 💡 Hardcoded for local mastery: Replaces "process.env.CI ? 1 : undefined"
+  workers: process.env.CI ? 1 : undefined,
 
   /* ========================================================================== */
   /* 3. ASSERTION LEVEL TIMEOUTS                                                */
@@ -80,7 +87,8 @@ export default defineConfig({
      * baseURL: Base URL to use in actions like `await page.goto('/')`.
      * Dynamically appends the centralized build number variable.
      */
-    baseURL: `https://qa.hitekschool.com/lms/`,
+    baseURL: `https://qa.hitekschool.com/lms/${BUILD_NUMBER}/`,
+    //baseURL: `https://qa.hitekschool.com/lms/`,
 
     /**
      * actionTimeout: Maximum time allowed for individual explicit browser steps.

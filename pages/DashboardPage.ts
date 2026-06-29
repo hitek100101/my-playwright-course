@@ -9,6 +9,7 @@ export class DashboardPage {
   private welcomeProfile: Locator;
   private dashboardNav: Locator;
   private usersNav: Locator;
+  private customersNav: Locator;
   private loansNav: Locator;
   private logoutButton: Locator;
 
@@ -23,6 +24,7 @@ export class DashboardPage {
     // Navigation Links (Left Menu) - Customers removed for student practice!
     this.dashboardNav = page.getByRole('link', { name: 'Dashboard' });
     this.usersNav = page.getByRole('link', { name: 'Users' });
+    this.customersNav = page.getByRole('link', { name: 'Customers' });
     this.loansNav = page.getByRole('link', { name: 'Loans' });
 
     // Buttons
@@ -38,6 +40,11 @@ export class DashboardPage {
 
   async goToUsers() {
     await this.usersNav.click();
+
+  }
+
+  async goToCustomers() {
+    await this.customersNav.click();
 
   }
 

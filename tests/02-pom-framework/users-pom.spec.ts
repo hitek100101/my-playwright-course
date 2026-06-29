@@ -10,6 +10,8 @@ import { UsersPage } from '../../pages/UsersPage';
 // Create a logical test suite block to group all LoanApp user management test scenarios together
 test.describe('SmartBank Application - User Management Workflows', () => {
 
+  // 👇 ADD THIS LINE BACK RIGHT HERE to force top-to-bottom serial execution 👇
+  test.describe.configure({ mode: 'serial' });
    // Shared Login Data
   const branchName = 'York';
   const loginUser = 'admin';
@@ -30,143 +32,6 @@ test.describe('SmartBank Application - User Management Workflows', () => {
     role: 'Loan Officer'              
   };
 
-
-
-
-
-  // /* // Define the end-to-end test case for adding new user
-  // test('Add User', async ({ page }) => {
-    
-  //   // ========================================================
-  //   // 1. INITIALIZE PAGE OBJECT BLUEPRINTS
-  //   // ========================================================
-    
-  //   // Instantiate the Login Page Object, passing the live browser 'page' instance into its constructor
-  //   const loginPage = new LoginPage(page);
-    
-  //   //// Instantiate the Dashboard Page Object to gain access to our sidebar navigation controls
-  //   //const dashboardPage = new DashboardPage(page);
-
-  //   //// Instantiate the Users Page Object to control Add User button and table with users
-  //   // KEEP THIS HERE: Since sidebar navigation returns void, 
-  //   // keeping this tool pre-built at the top avoids inline clutter later!
-  //   const usersPage = new UsersPage(page);
-    
-  //   //// Instantiate the Add User Page Object to control input form and operational submission buttons
-  //   //const userFormPage = new UserFormPage(page); commented to test fluent interface
-
-  //   /* // Create a data object containing all the text values we will fill into the form fields
-  //   const newUserDetails = {
-  //     username: 'tester_99', 
-  //     password: 'SecurePassword123!',    
-  //     firstName: 'Alex',                 
-  //     lastName: 'Smith',                 
-  //     company: 'Hitek QA Solutions',     
-  //     phone: '(605)555-0199',             
-  //     email: 'alex.smith@example.com',   
-  //     role: 'Loan Officer'               
-  //   }; */
-
-  //   // ========================================================
-  //   // STEP 1: Sign In and Navigate to Dashboard Page
-  //   // ========================================================
-    
-  //   // Use the LoginPage action method to direct the browser to the exact LoanApp login page URL
-  //   await loginPage.navigateTo(); 
-    
-  //   // Fill out the login form 
-  //   await loginPage.enterCredentials(branchName, loginUser, loginPass);
-
-  //   // Click the sign-in button 
-  //   // Dynamic handoff! No dashboardPage declaration at the top.
-  //   const dashboardPage = await loginPage.clickSignIn();
-  //   //await loginPage.clickSignIn();
-
-  //   // Fetch the welcome profile element locator from the dashboard page object
-  //   const welcomeAdminProfile = await dashboardPage.getWelcomeProfile();
-    
-  //   // Fetch the specific branch header locator instance from the dashboard page
-  //   const branchHeader = await dashboardPage.getBranchHeader();
-    
-  //   // STEP 1 NAVIGATION ASSERTIONS: Verify the profile element contains the text string "Welcome admin" AND the header "SmartBank Dashboard -'York' bracnh" is visible
-  //   await expect(welcomeAdminProfile).toContainText('Welcome admin');
-  //   await expect(branchHeader).toBeVisible();
-
-  //   // ========================================================
-  //   // STEP 2: Navigate to Users Page
-  //   // ========================================================
-    
-  //   // Click on the 'Users' link in the side menu on Dashboard
-  //   await dashboardPage.goToUsers();
-
-  //   // Get Users page header
-  //   const usersPageHeading = await usersPage.getUsersHeader();
-  //   await expect(usersPageHeading).toBeVisible();
-
-  //   //// Create a text locator to target the specific main title heading
-  //   //const usersPageHeading = page.getByRole('heading', { name: "Users - 'York' Branch" });
-    
-  //   //// STEP 2 NAVIGATION ASSERTION: Verify we successfully navigated to Users page by asserting the presence of the header "Users - 'York' Branch"
-  //   //await expect(usersPageHeading).toBeVisible();
-
-  //   // 👇 INSERT THE NEW PAGINATION METHOD HERE 👇
-  //   // This configures the grid to show all rows before starting form submission actions
-  //   // LOOK AT THIS! Because you kept it at the top, this line works perfectly
-  //   await usersPage.showAllRows();   
-
-  //   // ========================================================
-  //   // STEP 3: Navigate to Add User Page
-  //   // ========================================================
-    
-  //   //// Locate the blue "Add User" button and click it // commented to test Fluent interface
-  //   //await usersPage.clickAddUser();
-
-  //   // Locate the blue "Add User" button and click it
-  //   const userFormPage = await usersPage.clickAddUser(); // new to test Fluent Interface
-
-  //   // Fetch the heading locator for Add User Page
-  //   const formHeader = await userFormPage.getPageHeader();
-    
-  //   // STEP 3 NAVIGATION ASSERTION: Verify the Add User window loaded by asserting the presence of the header "Add User"
-  //   await expect(formHeader).toBeVisible();
-
-  //   // ========================================================
-  //   // DATA CREATION: Populate Form and Submit Data
-  //   // ========================================================
-
-  //   // Call createUserAndSave method to populater all fields and click the 'Save' button
-  //   await userFormPage.createUserAndSave(newUserDetails);
-
-  //   // Verify thr temporary confirmation mesage 'Created' appears in the top-right corner
-  //   await expect(page.getByRole('status')).toContainText('Created');
-    
-  //   // DYNAMIC LOCATOR DECLARATION: Create a link locator specifically matching the username inside the table cell row
-  //   const newUsernameLink = page.getByRole('link', { name: newUserDetails.username, exact: true });
-    
-  //   // FORM ACTION ASSERTION (Part B): Confirm the account exists by locating its fresh live link inside the grid
-  //   await expect(newUsernameLink).toBeVisible();
-
-  //   // ========================================================
-  //   // STEP 4: Navigate from Users Page to Dashboard
-  //   // ========================================================
-    
-  //   // Click the 'Dashboard' link in the sidebar menu 
-  //   await dashboardPage.goToDashboard();
-    
-  //   // STEP 4 NAVIGATION ASSERTION: Verify navigation backward worked by validating that 'SmartBank Dashboard - \'York\' branch' is visible again
-  //   await expect(branchHeader).toBeVisible();
-
-  //   // ========================================================
-  //   // STEP 5: Securely Log Out of the Session
-  //   // ========================================================
-    
-  //   // Click the 'Log out' button 
-  //   await dashboardPage.clickLogout();
-
-  //   // FINAL ASSERTION: Prove session termination by confirming the interface dropped back to the blank login card.
-  //   // We use a clean text search here to verify that the "Sign in" button is visible to the logged-out user.
-  //   await expect(page.getByRole('button', { name: 'Sign in' })).toBeVisible();
-  // }); */
 
 
 
