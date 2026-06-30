@@ -7,7 +7,6 @@ import { CustomersPage } from '../../pages/CustomersPage';
 import { CustomerFormPage } from '../../pages/CustomerFormPage';
 
 
-
 //test.describe('SmartBank Customer Management Framework (Static Data) @smoke', () => {
 test.describe('SmartBank Customer Management Framework (Static Data) @smoke @regression', () => {
 
