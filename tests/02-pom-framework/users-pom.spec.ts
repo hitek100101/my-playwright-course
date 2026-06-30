@@ -154,6 +154,7 @@ test.describe('SmartBank Application - User Management Workflows', () => {
     //await expect(page.getByRole('button', { name: 'Fake Button That Does Not Exist' })).toBeVisible();
     
     await expect(page.getByRole('button', { name: 'Sign in' })).toBeVisible();
+    
   });
 
 
