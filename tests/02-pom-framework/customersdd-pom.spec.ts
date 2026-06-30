@@ -122,7 +122,7 @@ test.describe('SmartBank Application - Customer Management Workflows (Data-Drive
         await expect(branchHeader).toBeVisible();
         
         await dashboardPage.clickLogout();
-        await expect(page.getByRole('button', { name: 'Sign in' })).toBeVisible();
+        await expect(page.getByRole('button', { name: 'Fake in' })).toBeVisible();
       });
     }
   }
