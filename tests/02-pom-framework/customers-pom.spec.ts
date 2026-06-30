@@ -60,7 +60,7 @@ test.describe('SmartBank Customer Management Framework (Static Data) @smoke', ()
 
     await dashboardPage.goToDashboard();
     await dashboardPage.clickLogout();
-    await expect(page.getByRole('button', { name: 'Sign in' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Fake in' })).toBeVisible();
   });
 
   // ========================================================

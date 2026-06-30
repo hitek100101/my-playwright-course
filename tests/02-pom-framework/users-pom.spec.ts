@@ -153,7 +153,7 @@ test.describe('SmartBank Application - User Management Workflows', () => {
     // FINAL ASSERTION: Prove session termination by confirming the interface dropped back to the blank login card.
     //await expect(page.getByRole('button', { name: 'Fake Button That Does Not Exist' })).toBeVisible();
     
-    await expect(page.getByRole('button', { name: 'Fake in' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Sign in' })).toBeVisible();
   });
 
 
