@@ -39,7 +39,6 @@ jobs:
 
     # 🚀 SMART CONDITIONAL RUNNER WITH INFRASTRUCTURE SAFEGUARDS
     - name: Execute Playwright Automation Tests
-      # run: npx playwright test
       run: |
         if [ "${{ github.event_name }}" == "pull_request" ]; then
           echo "Pull Request detected: Executing fast Smoke suite..."
