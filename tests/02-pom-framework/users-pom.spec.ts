@@ -8,7 +8,7 @@ import { UserFormPage } from '../../pages/UserFormPage';
 import { UsersPage } from '../../pages/UsersPage';
 
 // Create a logical test suite block to group all LoanApp user management test scenarios together
-test.describe('SmartBank Application - User Management Workflows', () => {
+test.describe('SmartBank Application - User Management Workflows @smoke @regression', () => {
 
   // 👇 ADD THIS LINE BACK RIGHT HERE to force top-to-bottom serial execution 👇
   test.describe.configure({ mode: 'serial' });
@@ -154,7 +154,7 @@ test.describe('SmartBank Application - User Management Workflows', () => {
     //await expect(page.getByRole('button', { name: 'Fake Button That Does Not Exist' })).toBeVisible();
     
     await expect(page.getByRole('button', { name: 'Sign in' })).toBeVisible();
-    
+
   });
 
 

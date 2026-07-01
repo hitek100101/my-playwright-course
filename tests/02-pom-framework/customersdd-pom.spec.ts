@@ -16,7 +16,7 @@ test.describe('SmartBank Application - Customer Management Workflows (Data-Drive
   for (const titleCase of customerTitles) {
     for (const buttonAction of actionButtons) {
 
-      test(`Should handle workflow for Title: "${titleCase}" using Button: "${buttonAction}" @regression`, async ({ page }) => {
+      test(`Should handle workflow for Title: "${titleCase}" using Button: "${buttonAction}" `, async ({ page }) => {
         
         // ========================================================
         // INITIALIZE ALL PAGE OBJECT BLUEPRINTS

@@ -19,7 +19,7 @@ test.describe('SmartBank Application - User Management Workflows', () => {
     for (const buttonAction of actionButtons) {
 
       // Dynamically name the test case based on the parameters
-      test(`Should handle workflow for Role: "${role}" using Button: "${buttonAction}"`, async ({ page }) => {
+      test(`Should handle workflow for Role: "${role}" using Button: "${buttonAction}" @regression`, async ({ page }) => {
         
         // ========================================================
         // INITIALIZE ALL PAGE OBJECT BLUEPRINTS
