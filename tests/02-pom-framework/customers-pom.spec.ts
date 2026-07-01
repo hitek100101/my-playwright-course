@@ -7,10 +7,9 @@ import { CustomersPage } from '../../pages/CustomersPage';
 import { CustomerFormPage } from '../../pages/CustomerFormPage';
 
 
-//test.describe('SmartBank Customer Management Framework (Static Data) @smoke', () => {
+//test.describe('SmartBank Customer Management Framework (Static Data)', () => {
 test.describe('SmartBank Customer Management Framework (Static Data) @smoke @regression', () => {
 
-  
 
   // 👇 ADD THIS LINE BACK RIGHT HERE to force top-to-bottom serial execution 👇
   test.describe.configure({ mode: 'serial' });

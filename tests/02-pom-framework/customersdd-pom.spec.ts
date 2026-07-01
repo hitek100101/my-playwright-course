@@ -16,7 +16,8 @@ test.describe('SmartBank Application - Customer Management Workflows (Data-Drive
   for (const titleCase of customerTitles) {
     for (const buttonAction of actionButtons) {
 
-      test(`Should handle workflow for Title: "${titleCase}" using Button: "${buttonAction}" `, async ({ page }) => {
+      //test(`Should handle workflow for Title: "${titleCase}" using Button: "${buttonAction}" `, async ({ page }) => {
+      test(`Should handle workflow for Title: "${titleCase}" using Button: "${buttonAction}" @regression`, async ({ page }) => {
         
         // ========================================================
         // INITIALIZE ALL PAGE OBJECT BLUEPRINTS
@@ -123,6 +124,16 @@ test.describe('SmartBank Application - Customer Management Workflows (Data-Drive
         
         await dashboardPage.clickLogout();
         await expect(page.getByRole('button', { name: 'Sign in' })).toBeVisible();
+
+
+        // ========================================================
+        // ⏳ ANTI-BRUTE FORCE PACING DELAY
+        // ========================================================
+        // Pause for 3 seconds to let the SmartBank application firewall cool down
+        // before the next parallel or iterative loop attempts another login.
+        await page.waitForTimeout(3000);
+
+
       });
     }
   }

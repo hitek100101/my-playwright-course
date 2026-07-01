@@ -141,6 +141,14 @@ test.describe('SmartBank Application - User Management Workflows', () => {
         
         await dashboardPage.clickLogout();
         await expect(page.getByRole('button', { name: 'Sign in' })).toBeVisible();
+
+        // ========================================================
+        // ⏳ ANTI-BRUTE FORCE PACING DELAY
+        // ========================================================
+        // Pause for 3 seconds to let the SmartBank application firewall cool down
+        // before the next parallel or iterative loop attempts another login.
+        await page.waitForTimeout(3000);
+
       });
     }
   }
