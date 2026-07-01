@@ -35,7 +35,6 @@ test.describe('SmartBank Application - User Management Workflows @smoke @regress
 
 
 
-
   // Define the end-to-end test case for adding new user
   test('Add User', async ({ page }) => {
     
