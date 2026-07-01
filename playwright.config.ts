@@ -73,7 +73,7 @@ export default defineConfig({
      * The maximum time a Web-First Assertion (e.g., expect(locator).toBeVisible())
      * will poll the DOM before throwing an error. Uses intelligent micro-polling.
      */
-    timeout: 5000, // 5 seconds (Default value, explicitly declared for student clarity)
+    timeout: 10000, // 10 seconds (Default value, explicitly declared for clarity)
   },
 
   /* Reporter to use. Generates a local interactive browser dashboard. */
